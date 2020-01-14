@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Home</h1>
+
+<form method="POST"> 
+  <textarea name="textbox"></textarea>
+  <button type="submit" name="submit">Submit</button>
+</form>
+
+<!-- <div>{{ lin }}</div> -->
+  <a href="{{ lin }}"></a>
+
+  {% for i in lin  %}
+  <img src="{{ i }}" alt="">
+  {% endfor %}
+
+{{ a }}
+{% endblock %}
