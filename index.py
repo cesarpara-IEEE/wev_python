@@ -32,6 +32,18 @@ def desplegar(num):
   return acc
 ###----------------------------###
 
+def desplegar02():
+  res = []
+  URL = 'https://boards.4chan.org/s/'
+  page = requests.get(URL)
+  soup = BeautifulSoup(page.content, 'html.parser')
+  arr = soup.find_all(class_="fileThumb")
+  for i in arr:
+      res.append("http:" + str(i.get('href')))
+  return res
+
+##-----------------------------------##
+
 
 app = Flask(__name__, template_folder='template')  #Importante señores es una nueva configuracion
 
@@ -46,9 +58,17 @@ def some_function():
     acc = desplegar(int(text))
     return render_template('home.html', lin = acc)
 
+
 @app.route('/about')
 def about():
-  return render_template('about.html')
+  rcc = desplegar02()
+  return render_template('about.html', lon = rcc)
+
+""" @app.route('/about', methods=["POST"])
+def some_function02():
+    text = request.form.get('textbox')
+    rcc = desplegar02()
+    return render_template('about.html', lon = rcc) """
 
 if __name__ == '__main__':
   app.run(debug=True)
