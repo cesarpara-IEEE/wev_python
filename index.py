@@ -31,7 +31,7 @@ def desplegar(num):
       acc.append(i.get('href'))
   return acc
 ###----------------------------###
-
+   
 def desplegar02():
   res = []
   URL = 'https://boards.4chan.org/s/'
@@ -57,18 +57,12 @@ def some_function():
     text = request.form.get('textbox')
     acc = desplegar(int(text))
     return render_template('home.html', lin = acc)
-
+ 
 
 @app.route('/about')
 def about():
   rcc = desplegar02()
   return render_template('about.html', lon = rcc)
-
-""" @app.route('/about', methods=["POST"])
-def some_function02():
-    text = request.form.get('textbox')
-    rcc = desplegar02()
-    return render_template('about.html', lon = rcc) """
 
 if __name__ == '__main__':
   app.run(debug=True)
